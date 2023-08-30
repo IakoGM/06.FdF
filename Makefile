@@ -6,7 +6,7 @@
 #    By: jakgonza <jakgonza@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 14:13:54 by jakgonza          #+#    #+#              #
-#    Updated: 2023/08/28 16:35:00 by jakgonza         ###   ########.fr        #
+#    Updated: 2023/08/29 10:24:08 by jakgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ $(MLX):
 	gcc $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	gcc $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	gcc $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -lXext -lX11 -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
@@ -49,4 +49,6 @@ fclean:
 
 re: fclean all
 
-.PHONY: all clean fclean re
+iako: clean fclean
+
+.PHONY: all clean fclean re iako
