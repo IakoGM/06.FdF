@@ -1,0 +1,3 @@
+[submodule "gnl"]
+	path = gnl
+	url = https://github.com/IakoGM/03.get_next_line.git

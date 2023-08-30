@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jakgonza <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jakgonza <jakgonza@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 15:24:43 by jakgonza          #+#    #+#              #
-#    Updated: 2022/09/19 11:54:27 by jakgonza         ###   ########.fr        #
+#    Updated: 2023/08/30 13:49:23 by jakgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ SRCS = ft_isalpha.c\
 	   ft_calloc.c\
 	   ft_strdup.c\
 	   ft_substr.c\
-	   ft_strjoin.c\
 	   ft_strtrim.c\
 	   ft_split.c\
 	   ft_itoa.c\

@@ -6,7 +6,7 @@
 /*   By: jakgonza <jakgonza@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:42:33 by jakgonza          #+#    #+#             */
-/*   Updated: 2023/08/30 12:13:44 by jakgonza         ###   ########.fr       */
+/*   Updated: 2023/08/30 13:57:24 by jakgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,32 @@ int	main(void)
 	t_data	imagen;
 	int		i;
 	int		j;
+	int		fd;
+	int		counter;
+    char    *printer;
 
+    counter = 0;
+	printer = "";
 	i = 0;
+	fd = open("test_maps/42.fdf", O_RDONLY);
+	if (fd == -1)
+	{
+		printf("No se ha podido abrir el archivo\n");
+		return (0);
+	}
+	while (printer != NULL)
+	{
+		printer = get_next_line(fd);
+		if (printer == NULL)
+		{
+			free(printer);
+			break ;
+		}
+		counter++;
+		printf("%d : %s\n", counter, printer);
+		free(printer);
+	}
+	close(fd);
 	conn = mlx_init();
 	win = mlx_new_window(conn, 800, 600, "Iakito's Window");
 	imagen.img = mlx_new_image(conn, 800, 600);
