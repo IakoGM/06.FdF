@@ -6,7 +6,7 @@
 /*   By: jakgonza <jakgonza@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:42:33 by jakgonza          #+#    #+#             */
-/*   Updated: 2023/08/30 13:57:24 by jakgonza         ###   ########.fr       */
+/*   Updated: 2023/08/31 09:05:12 by jakgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,54 +23,50 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+// Algoritmo de Breseham
+void ft_bresenham(t_data imagen, int x0, int y0, int x1, int y1)
+{
+    int dx = abs(x1 - x0);
+    int dy = abs(y1 - y0);
+    int sx = x0 < x1 ? 1 : -1;
+    int sy = y0 < y1 ? 1 : -1;
+    int err = dx - dy;
+
+    while (x0 != x1 || y0 != y1) {
+        printf("(%d, %d)\n", x0, y0);
+        int err2 = 2 * err;
+        if (err2 > -dy)
+		{
+            err -= dy;
+            x0 += sx;
+        }
+        if (err2 < dx)
+		{
+            err += dx;
+            y0 += sy;
+        }
+		my_mlx_pixel_put(&imagen, x0, y0, 0x00FF0000);
+    }
+}
+
 int	main(void)
 {
 	void	*conn;
 	void	*win;
 	t_data	imagen;
-	int		i;
-	int		j;
-	int		fd;
-	int		counter;
-    char    *printer;
 
-    counter = 0;
-	printer = "";
-	i = 0;
-	fd = open("test_maps/42.fdf", O_RDONLY);
-	if (fd == -1)
-	{
-		printf("No se ha podido abrir el archivo\n");
-		return (0);
-	}
-	while (printer != NULL)
-	{
-		printer = get_next_line(fd);
-		if (printer == NULL)
-		{
-			free(printer);
-			break ;
-		}
-		counter++;
-		printf("%d : %s\n", counter, printer);
-		free(printer);
-	}
-	close(fd);
+	int x0 = 300, y0 = 300;
+    int x1 = 250, y1 = 120;
+	
 	conn = mlx_init();
 	win = mlx_new_window(conn, 800, 600, "Iakito's Window");
 	imagen.img = mlx_new_image(conn, 800, 600);
 	imagen.addr = mlx_get_data_addr(imagen.img, &imagen.bits_per_pixel, &imagen.line_length, &imagen.endian);
-	while (i < 30)
-	{
-		j = 0;
-		while (j < 30)
-		{
-			my_mlx_pixel_put(&imagen, 300 + i, 300 + j, 0x00FF0000);
-			j++;
-		}
-		i++;
-	}
+	ft_bresenham(imagen, x0, y0, x1, y1);
 	mlx_put_image_to_window(conn, win, imagen.img, 0, 0);
 	mlx_loop(conn);
 	return (0);
 }
+
+
+		// my_mlx_pixel_put(&imagen, x, y, 0x00FF0000);

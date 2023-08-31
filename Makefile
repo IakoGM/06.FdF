@@ -6,7 +6,7 @@
 #    By: jakgonza <jakgonza@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 14:13:54 by jakgonza          #+#    #+#              #
-#    Updated: 2023/08/30 13:46:54 by jakgonza         ###   ########.fr        #
+#    Updated: 2023/08/31 09:05:47 by jakgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,6 @@ fclean:
 
 re: fclean all
 
-iako: clean fclean
+c: clean fclean
 
-.PHONY: all clean fclean re iako
+.PHONY: all clean fclean re c
