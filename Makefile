@@ -6,7 +6,7 @@
 #    By: jakgonza <jakgonza@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 14:13:54 by jakgonza          #+#    #+#              #
-#    Updated: 2023/08/31 09:05:47 by jakgonza         ###   ########.fr        #
+#    Updated: 2023/08/31 13:02:26 by jakgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,10 @@ $(GNL):
 	gcc $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(GNL) $(MLX)
-	gcc $(CFLAGS) $(OBJS) $(LIBFT) $(GNL) $(MLX) -lXext -lX11 -o $(NAME)
+	gcc $(CFLAGS) $(OBJS) $(LIBFT) $(GNL) $(MLX) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+# gcc $(CFLAGS) $(OBJS) $(LIBFT) $(GNL) $(MLX) -lXext -lX11 -o $(NAME)	
+# gcc $(CFLAGS) $(OBJS) $(LIBFT) $(GNL) $(MLX) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
